@@ -32,7 +32,7 @@ local script = getgenv().script
 local funcs = script.funcs
 local main = script.main
 local module_storage = getgenv().script.main.module_storage[modulename]
-local loaded_modules = getgenv().script.module_storage.loaded
+local loaded_modules = getgenv().script.main.module_storage.loaded
 local fakebackups = {}
 local link_succes = {}
 
@@ -82,17 +82,17 @@ function module_table:createBackup(name, f)
 end
   
 function module_table:isImported(name)
-    if getgenv().script.module_storage.loaded == nil then
+    if getgenv().script.main.module_storage.loaded == nil then
         return
     end
-    if getgenv().script.module_storage.loaded[name] ~= nil then
+    if getgenv().script.main.module_storage.loaded[name] ~= nil then
         return true
     end
     return false
  end
   
 function module_table:waitForImport(name)
-    if getgenv().script.module_storage.loaded == nil then
+    if getgenv().script.main.module_storage.loaded == nil then
        return
     end
     repeat
