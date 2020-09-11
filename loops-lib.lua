@@ -32,7 +32,7 @@ local script = getgenv().script
 local funcs = script.funcs
 local main = script.main
 local module_storage = getgenv().script.main.module_storage[modulename]
-local loaded_modules = getgenv().script.module_storage.loaded
+local loaded_modules = getgenv().script.main.module_storage.loaded
 local loops = {}
 
 if script or funcs or main == nil then
