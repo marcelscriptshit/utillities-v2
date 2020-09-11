@@ -1,4 +1,4 @@
-local modulename = "loops_lib"
+local modulename = "loops-lib"
 local module_table = {}
 getgenv().script.main.module_storage[modulename] = {}
 
@@ -32,6 +32,7 @@ local script = getgenv().script
 local funcs = script.funcs
 local main = script.main
 local module_storage = getgenv().script.main.module_storage[modulename]
+local loaded_modules = getgenv().script.module_storage.loaded
 local loops = {}
 
 if script or funcs or main == nil then
@@ -107,7 +108,7 @@ end
 
 module_storage.loops = loops
 
-script.loaded_modules[modulename] = "Succes"
+table.insert(loaded_modules,modulename)
 
 return module_table
 
