@@ -1,4 +1,4 @@
-local modulename = "const_lib"
+local modulename = "const-lib"
 local module_table = {}
 getgenv().script.main.module_storage[modulename] = {}
 
@@ -32,6 +32,7 @@ local script = getgenv().script
 local funcs = script.funcs
 local main = script.main
 local module_storage = getgenv().script.main.module_storage[modulename]
+local loaded_modules = getgenv().script.module_storage.loaded
 
 if script or funcs or main == nil then
     return
@@ -70,7 +71,7 @@ end
 
 
 
-script.loaded_modules[modulename] = "Succes"
+table.insert(loaded_modules,modulename)
 
 return module_table
 
