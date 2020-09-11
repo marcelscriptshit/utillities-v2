@@ -37,7 +37,7 @@ local fakebackups = {}
 local link_succes = {}
 
 
-if script or funcs or main == nil then
+if (script or funcs or main) == nil then
     return
 end
 
@@ -111,6 +111,7 @@ module_storage.link_succes = link_succes
 module_storage.fakebackups = fakebackups
 
 table.insert(loaded_modules,modulename)
+
 
 return module_table
 
