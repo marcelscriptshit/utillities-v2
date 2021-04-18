@@ -1,6 +1,6 @@
 local modulename = "visuals-lib"
 getgenv().script.main.module_storage[modulename] = {}
-
+local loaded_modules = getgenv().script.main.module_storage.loaded
 
 
 --Settings--
