@@ -1,3 +1,8 @@
+local modulename = "visuals-lib"
+getgenv().script.main.module_storage[modulename] = {}
+
+
+
 --Settings--
 local ESP = {
     Enabled = false,
@@ -379,5 +384,7 @@ game:GetService("RunService").RenderStepped:Connect(function()
         end
     end
 end)
+
+table.insert(loaded_modules,modulename)
 
 return ESP
