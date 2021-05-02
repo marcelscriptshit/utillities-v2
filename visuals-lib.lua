@@ -6,12 +6,16 @@ local loaded_modules = getgenv().script.main.module_storage.loaded
 --Settings--
 local ESP = {
     Enabled = false,
-    Boxes = true,
+    Boxes = false,
     BoxShift = CFrame.new(0,-1.5,0),
 	BoxSize = Vector3.new(4,6,0),
     Color = Color3.fromRGB(255, 170, 0),
+    NameColor = Color3.fromRGB(0, 255, 0),
+    TracerColor = Color3.fromRGB(0, 0, 255),
+    BoxColor = Color3.fromRGB(255, 255, 0),
     FaceCamera = false,
-    Names = true,
+    Names = false,
+    Tracers = false,
     TeamColor = true,
     Thickness = 2,
     AttachShift = 1,
@@ -60,6 +64,15 @@ function ESP:IsTeamMate(p)
     return self:GetTeam(p) == self:GetTeam(plr)
 end
 
+function ESP:GetColorNames(obj)
+	local ov = self.Overrides.GetColor
+	if ov then
+		return ov(obj)
+    end
+    local p = self:GetPlrFromChar(obj)
+	return p and self.TeamColor and p.Team and p.Team.TeamColor.Color or self.NameColor
+end
+
 function ESP:GetColor(obj)
 	local ov = self.Overrides.GetColor
 	if ov then
@@ -68,6 +81,26 @@ function ESP:GetColor(obj)
     local p = self:GetPlrFromChar(obj)
 	return p and self.TeamColor and p.Team and p.Team.TeamColor.Color or self.Color
 end
+
+function ESP:GetColorTracers(obj)
+	local ov = self.Overrides.GetColor
+	if ov then
+		return ov(obj)
+    end
+    local p = self:GetPlrFromChar(obj)
+	return p and self.TeamColor and p.Team and p.Team.TeamColor.Color or self.TracerColor
+end
+
+function ESP:GetColorBoxes(obj)
+	local ov = self.Overrides.GetColor
+	if ov then
+		return ov(obj)
+    end
+    local p = self:GetPlrFromChar(obj)
+	return p and self.TeamColor and p.Team and p.Team.TeamColor.Color or self.BoxColor
+end
+
+
 
 function ESP:GetPlrFromChar(char)
 	local ov = self.Overrides.GetPlrFromChar
@@ -163,13 +196,13 @@ function boxBase:Update()
     if ESP.Overrides.UpdateAllow and not ESP.Overrides.UpdateAllow(self) then
         allow = false
     end
-    if self.Player and not ESP.TeamMates and ESP:IsTeamMate(self.Player) then
-        allow = false
-    end
     if self.Player and not ESP.Players then
         allow = false
     end
     if self.IsEnabled and (type(self.IsEnabled) == "string" and not ESP[self.IsEnabled] or type(self.IsEnabled) == "function" and not self:IsEnabled()) then
+        allow = false
+    end
+    if self.Player and not ESP.TeamMates and ESP:IsTeamMate(self.Player) then
         allow = false
     end
     if not workspace:IsAncestorOf(self.PrimaryPart) and not self.RenderInNil then
@@ -203,10 +236,12 @@ function boxBase:Update()
     }
 
     if ESP.Boxes then
+
         local TopLeft, Vis1 = WorldToViewportPoint(cam, locs.TopLeft.p)
         local TopRight, Vis2 = WorldToViewportPoint(cam, locs.TopRight.p)
         local BottomLeft, Vis3 = WorldToViewportPoint(cam, locs.BottomLeft.p)
         local BottomRight, Vis4 = WorldToViewportPoint(cam, locs.BottomRight.p)
+        local colorbox = ESP:GetColorBoxes()
 
         if self.Components.Quad then
             if Vis1 or Vis2 or Vis3 or Vis4 then
@@ -215,7 +250,7 @@ function boxBase:Update()
                 self.Components.Quad.PointB = Vector2.new(TopLeft.X, TopLeft.Y)
                 self.Components.Quad.PointC = Vector2.new(BottomLeft.X, BottomLeft.Y)
                 self.Components.Quad.PointD = Vector2.new(BottomRight.X, BottomRight.Y)
-                self.Components.Quad.Color = color
+                self.Components.Quad.Color = colorbox
             else
                 self.Components.Quad.Visible = false
             end
@@ -225,18 +260,20 @@ function boxBase:Update()
     end
 
     if ESP.Names then
+
         local TagPos, Vis5 = WorldToViewportPoint(cam, locs.TagPos.p)
+        local colornames = ESP:GetColorNames()
         
         if Vis5 then
             self.Components.Name.Visible = true
             self.Components.Name.Position = Vector2.new(TagPos.X, TagPos.Y)
             self.Components.Name.Text = self.Name
-            self.Components.Name.Color = color
+            self.Components.Name.Color = colornames
             
             self.Components.Distance.Visible = true
             self.Components.Distance.Position = Vector2.new(TagPos.X, TagPos.Y + 14)
             self.Components.Distance.Text = math.floor((cam.CFrame.p - cf.p).magnitude) .."m away"
-            self.Components.Distance.Color = color
+            self.Components.Distance.Color = colornames
         else
             self.Components.Name.Visible = false
             self.Components.Distance.Visible = false
@@ -247,13 +284,15 @@ function boxBase:Update()
     end
     
     if ESP.Tracers then
+
         local TorsoPos, Vis6 = WorldToViewportPoint(cam, locs.Torso.p)
+        local colortracer = ESP:GetColorTracers()
 
         if Vis6 then
             self.Components.Tracer.Visible = true
             self.Components.Tracer.From = Vector2.new(TorsoPos.X, TorsoPos.Y)
             self.Components.Tracer.To = Vector2.new(cam.ViewportSize.X/2,cam.ViewportSize.Y/ESP.AttachShift)
-            self.Components.Tracer.Color = color
+            self.Components.Tracer.Color = colortracer
         else
             self.Components.Tracer.Visible = false
         end
