@@ -162,16 +162,13 @@ local function DrawESP(plr)
                             return
                         end
                     end
-                    if not module.toggle then
-                        Visibility(false)
-                    end
 
-                    if not module.enabled then
+                    if not module.enabled and not module.toggle then
                         Visibility(false)
                     end
 
                     if limbs.Head_UpperTorso.Visible ~= true then
-                        if module.enabled or module.toggle then
+                        if module.enabled and module.toggle then
                             Visibility(true)
                         end
                     end
@@ -270,17 +267,13 @@ local function DrawESP(plr)
                         end
                     end
 
-                    if not module.toggle then
-                        Visibility(false)
-                    end
-
-                    if not module.enabled then
+                    if not module.enabled and not module.toggle then
                         Visibility(false)
                     end
                     
 
                     if limbs.Head_Spine.Visible ~= true then
-                        if module.enabled or module.toggle then
+                        if module.enabled and module.toggle then
                             Visibility(true)
                         end
                     end
