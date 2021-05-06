@@ -163,7 +163,11 @@ local function DrawESP(plr)
                         end
                     end
 
-                    if not module.toggle or not module.toggle then
+                    if not module.toggle then
+                        Visibility(false)
+                    end
+
+                    if not module.enabled then
                         Visibility(false)
                     end
 
@@ -267,7 +271,11 @@ local function DrawESP(plr)
                         end
                     end
 
-                    if not module.enabled or not module.toggle then
+                    if not module.toggle then
+                        Visibility(false)
+                    end
+
+                    if not module.enabled then
                         Visibility(false)
                     end
                     
