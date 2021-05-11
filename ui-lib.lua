@@ -183,7 +183,7 @@ do--main
         Icon.ZIndex = 2
 
         if icon ~= nil then
-            Icon.Image = "rbxassetid://".. icon
+            Icon.Image = "http://www.roblox.com/asset/?id=".. icon
         end
 
         Body.Name = "Body"
