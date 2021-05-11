@@ -635,7 +635,6 @@ do--main
             UIS.InputEnded:Connect(function(inputObject)
                 if inputObject.UserInputType == Enum.UserInputType.MouseButton1 then
                     Held = false
-                    print("false")
                 end
             end)
 
