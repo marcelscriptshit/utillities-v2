@@ -181,7 +181,7 @@ do--main
         Icon.Position = UDim2.new(0.0160427801, 0, 0.09375, 0)
         Icon.Size = UDim2.new(0.13903743, 0, 0.8125, 0)
         Icon.ZIndex = 10
-        Icon.Image = "rbxassetid://".. icon
+        Icon.Image = "https://www.roblox.com/Thumbs/Asset.ashx?width=420&height=420&assetId="..icon
 
         Body.Name = "Body"
         Body.Parent = Tab
