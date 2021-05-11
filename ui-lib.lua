@@ -180,11 +180,8 @@ do--main
         Icon.BackgroundTransparency = 1.000
         Icon.Position = UDim2.new(0.0160427801, 0, 0.09375, 0)
         Icon.Size = UDim2.new(0.13903743, 0, 0.8125, 0)
-        Icon.ZIndex = 2
-
-        if icon ~= nil then
-            Icon.Image = "http://www.roblox.com/asset/?id=".. icon
-        end
+        Icon.ZIndex = 10
+        Icon.Image = "http://www.roblox.com/asset/?id=".. icon
 
         Body.Name = "Body"
         Body.Parent = Tab
