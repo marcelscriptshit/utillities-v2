@@ -6,7 +6,9 @@ local options = {
     open = true,
     unlocked = false,
 }
-local library = {}
+local library = {
+    blurcamera2 = true,
+}
 
 
 if game:GetService("CoreGui"):FindFirstChild("MainUI") then
@@ -36,20 +38,22 @@ do--funcs
 
     function library:blurcamera(yes)
         local tween
-        if yes then
-            local a = Instance.new("BlurEffect",workspace.CurrentCamera)
-            tween = TS:Create(a,TweenInfo.new(1,Enum.EasingStyle.Sine,Enum.EasingDirection.Out),{Size = 15})
-            a.Size = 0
-            a.Enabled = true
-            a.Name = "blur"
-            tween:Play()
-        else
-            if workspace.CurrentCamera:FindFirstChild("blur") then
-                tween = TS:Create(workspace.CurrentCamera.blur,TweenInfo.new(1,Enum.EasingStyle.Sine,Enum.EasingDirection.Out),{Size = 0})
+        if library.blurcamera2 then
+            if yes then
+                local a = Instance.new("BlurEffect",workspace.CurrentCamera)
+                tween = TS:Create(a,TweenInfo.new(1,Enum.EasingStyle.Sine,Enum.EasingDirection.Out),{Size = 15})
+                a.Size = 0
+                a.Enabled = true
+                a.Name = "blur"
                 tween:Play()
-                tween.Completed:Connect(function()
-                    workspace.CurrentCamera.blur:Destroy()
-                end)
+            else
+                if workspace.CurrentCamera:FindFirstChild("blur") then
+                    tween = TS:Create(workspace.CurrentCamera.blur,TweenInfo.new(1,Enum.EasingStyle.Sine,Enum.EasingDirection.Out),{Size = 0})
+                    tween:Play()
+                    tween.Completed:Connect(function()
+                        workspace.CurrentCamera.blur:Destroy()
+                    end)
+                end
             end
         end
     end
