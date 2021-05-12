@@ -635,7 +635,7 @@ do--main
                 end
             end)
 
-            function slidertable:Set(val)
+            function slidertable:OverwriteSetting(val)
                 val = tonumber(val) or 0
                 val = (((val >= 0 and val <= 100) and val) / 100)
 
@@ -652,7 +652,7 @@ do--main
                 pcall(callback, sel_value)
             end
 
-            slidertable:Set(slidertable.min)
+            slidertable:OverwriteSetting(slidertable.min)
 
             refreshtab()
             return slidertable,Slider
@@ -1077,7 +1077,7 @@ do--main
                     end
                 end)
 
-                function colorpicktable:Set(color)
+                function colorpicktable:OverwriteSetting(color)
                     color = typeof(color) == "Color3" and color or Color3.new(1, 1, 1)
                     local h2, s2, v2 = rgbtohsv(color.r * 255, color.g * 255, color.b * 255)
                     ColorChosen.ImageColor3 = color
