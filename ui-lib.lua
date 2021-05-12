@@ -5,6 +5,7 @@ local options = {
     tabs = {},
     blurcamera = false,
     open = true,
+    folders = {}
 }
 local library = {}
 
@@ -672,7 +673,6 @@ do--main
             local Click = Instance.new("ImageLabel")
             local UIGradient_2123123 = Instance.new("UIGradient")
             local Drop123 = Instance.new("ImageButton")
-
 
             FolderItem.Name = "FolderItem"
             FolderItem.Parent = Holder
@@ -1380,9 +1380,7 @@ UIS.InputBegan:Connect(function(input,process)
     end
 end)
 
-
 return library
-
 
 
 
