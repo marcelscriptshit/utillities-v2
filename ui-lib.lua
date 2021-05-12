@@ -262,7 +262,7 @@ do--main
         end
 
         function refreshtab()
-            Background.Size = UDim2.new(1, 0, (0.688 * (window.count + window.tempcount)), 0)
+            tweenitem(Background,0.1,{Size = UDim2.new(1,0,0.688 * (window.count + window.tempcount),0)})
         end
 
         local dropped = true
@@ -785,8 +785,9 @@ do--main
                 if open then
                     tweenitem(Drop123,0.1,{Rotation = 90})
                     toggleitems(true)
-                    if getcount() ~= 0 then
-                        ADDED = getcount()
+                    local c = getcount()
+                    if c > 0 then
+                        ADDED = c
                         print(ADDED,window.tempcount)
                         window.tempcount = window.tempcount + ADDED
                     end
@@ -795,7 +796,7 @@ do--main
                 else
                     tweenitem(Drop123,0.1,{Rotation = 0})
                     toggleitems(false)
-                    if getcount() ~= 0 then
+                    if ADDED > 0 then
                         window.tempcount = window.tempcount - ADDED
                     end
                     refreshtab()
@@ -837,6 +838,7 @@ do--main
                 end
             end
 
+            refreshtab()
             return folderdata, FolderItem
         end
 
