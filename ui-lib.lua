@@ -787,6 +787,7 @@ do--main
                     toggleitems(true)
                     if getcount() ~= 0 then
                         ADDED = getcount()
+                        print(ADDED,window.tempcount)
                         window.tempcount = window.tempcount + ADDED
                     end
                     refreshtab()
