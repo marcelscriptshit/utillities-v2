@@ -1354,6 +1354,15 @@ do--key
         Text.Text = stuff.Text
         wait(1)
 
+        Copy.MouseButton1Click:Connect(function()
+            if stuff.link ~= nil then
+                setclipboard(stuff.link)
+                TextLabel_8.Text = "copied"
+                wait(1)
+                TextLabel_8.Text = "copy"
+            end
+        end)
+
         TextBox_2.FocusLost:Connect(function()
             enteredtext = TextBox_2.Text
             TextBox_2.Text = "enter key"
