@@ -788,9 +788,7 @@ do--main
                     if c > 0 then
                         ADDED = getcount()
                         window.tempcount = window.tempcount + ADDED
-                        print(ADDED,window.tempcount)
                     end
-                    print(ADDED,window.tempcount)
                     tweenitem(Background,0.1,{Size = UDim2.new(1,0,0.688 * (window.count + window.tempcount),0)})
                     
                 else
@@ -799,7 +797,6 @@ do--main
                     if ADDED > 0 then
                         window.tempcount = window.tempcount - ADDED
                     end
-                    print(ADDED,window.tempcount)
                     tweenitem(Background,0.1,{Size = UDim2.new(1,0,0.688 * (window.count + window.tempcount),0)})
                 end
             end)
