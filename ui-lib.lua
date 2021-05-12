@@ -261,7 +261,7 @@ do--main
         end
 
         function refreshtab()
-            tweenitem(Background,0.1,{Size = UDim2.new(1,0,0.688 * (window.count + window.tempcount),0)})
+            tweenitem(Background,0.1,{Size = UDim2.new(1,0,0,22 * (window.count + window.tempcount))})
         end
 
         local dropped = true
@@ -269,7 +269,7 @@ do--main
             dropped = not dropped
             if dropped then
                 tweenitem(Body,0.1,{Size = UDim2.new(1,0,23.038,0)})
-                tweenitem(Background,0.1,{Size = UDim2.new(1,0,0.688 * (window.count + window.tempcount),0)})
+                tweenitem(Background,0.1,{Size = UDim2.new(1,0,0,22 * (window.count + window.tempcount))})
                 tweenitem(Drop,0.1,{Rotation = 90})
             else
                 tweenitem(Body,0.1,{Size = UDim2.new(1,0,0,0)})
@@ -789,7 +789,7 @@ do--main
                         ADDED = getcount()
                         window.tempcount = window.tempcount + ADDED
                     end
-                    tweenitem(Background,0.1,{Size = UDim2.new(1,0,0.688 * (window.count + window.tempcount),0)})
+                    tweenitem(Background,0.1,{Size = UDim2.new(1,0,0,22 * (window.count + window.tempcount))})
                     
                 else
                     tweenitem(Drop123,0.1,{Rotation = 0})
@@ -797,7 +797,7 @@ do--main
                     if ADDED > 0 then
                         window.tempcount = window.tempcount - ADDED
                     end
-                    tweenitem(Background,0.1,{Size = UDim2.new(1,0,0.688 * (window.count + window.tempcount),0)})
+                    tweenitem(Background,0.1,{Size = UDim2.new(1,0,0,22 * (window.count + window.tempcount))})
                 end
             end)
 
