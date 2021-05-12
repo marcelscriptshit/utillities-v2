@@ -1,6 +1,5 @@
 local options = {
     key = Enum.KeyCode.RightShift,
-    keyset = 123,
     tabscount = 0,
     tabs = {},
     blurcamera = false,
@@ -22,7 +21,7 @@ ScreenGui.Parent = game:GetService("CoreGui")
 ScreenGui.Name = "MainUI"
 
 do--funcs
-    function movechat(yes)
+    function library:movechat(yes)
         if yes then
             game:GetService("Players").LocalPlayer.PlayerGui.Chat.Frame.Position = UDim2.new(0,0,0.73,0)
         else
@@ -34,7 +33,7 @@ do--funcs
         return Vector2.new(UIS:GetMouseLocation().X + 1, UIS:GetMouseLocation().Y - 35)
     end
 
-    function blurcamera(yes)
+    function library:blurcamera(yes)
         local tween
         if yes then
             local a = Instance.new("BlurEffect",workspace.CurrentCamera)
@@ -1344,7 +1343,7 @@ do--key
         end)
 
         Button_5.MouseButton1Click:Connect(function()
-            if tonumber(enteredtext) == options.keyset or (stuff.key and tonumber(enteredtext) == stuff.key) then
+            if (stuff.key and tonumber(enteredtext) == stuff.key) then
                 local tw2 = TS:Create(Key,info,{Position = UDim2.new(-1, 0,0.514, 0)})
                 tw2:Play()
                 stuff.func()
@@ -1365,15 +1364,15 @@ UIS.InputBegan:Connect(function(input,process)
         options.open = not options.open
         cooldown = true
         if options.open then
-            movechat(true)
-            blurcamera(true)
+            library:movechat(true)
+            library:blurcamera(true)
             library:OpenMenu()
             wait(1)
             cooldown = false
             
         else
-            movechat(false)
-            blurcamera(false)
+            library:movechat(false)
+            library:blurcamera(false)
             library:CloseMenu()
             wait(1)
             cooldown = false
