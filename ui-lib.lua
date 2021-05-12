@@ -1092,26 +1092,28 @@ do--main
 
         end
 
-        function window:AddText(text)
+        function window:AddText(text,barunderline)
             window.count = window.count + 1
 
             local Label = Instance.new("Frame")
             local UIGradien123123t = Instance.new("UIGradient")
             local TextLabel = Instance.new("TextLabel")
-            local Bar123 = Instance.new("Frame")
-            local UIGradient124254 = Instance.new("UIGradient")
 
+            if barunderline == true then
+                local Bar123 = Instance.new("Frame")
+                local UIGradient124254 = Instance.new("UIGradient")
 
-            Bar123.Name = "Bar"
-            Bar123.Parent = TextLabel
-            Bar123.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-            Bar123.BorderSizePixel = 0
-            Bar123.Position = UDim2.new(-0.0625, 0, 0.906000316, 0)
-            Bar123.Size = UDim2.new(1.05681813, 0, 0, 1)
-            Bar123.ZIndex = 10
+                Bar123.Name = "Bar"
+                Bar123.Parent = TextLabel
+                Bar123.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+                Bar123.BorderSizePixel = 0
+                Bar123.Position = UDim2.new(-0.0625, 0, 0.906000316, 0)
+                Bar123.Size = UDim2.new(1.05681813, 0, 0, 1)
+                Bar123.ZIndex = 10
 
-            UIGradient124254.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 0, 255)), ColorSequenceKeypoint.new(0.29, Color3.fromRGB(170, 0, 127)), ColorSequenceKeypoint.new(0.68, Color3.fromRGB(170, 0, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(0, 0, 255))}
-            UIGradient124254.Parent = Bar123
+                UIGradient124254.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 0, 255)), ColorSequenceKeypoint.new(0.29, Color3.fromRGB(170, 0, 127)), ColorSequenceKeypoint.new(0.68, Color3.fromRGB(170, 0, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(0, 0, 255))}
+                UIGradient124254.Parent = Bar123
+            end
 
             Label.Name = "Label"
             Label.Parent = Holder
