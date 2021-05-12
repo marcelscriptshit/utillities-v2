@@ -4,6 +4,7 @@ local options = {
     tabs = {},
     blurcamera = false,
     open = true,
+    unlocked = false,
 }
 local library = {}
 
@@ -1346,6 +1347,7 @@ do--key
             if (stuff.key and tonumber(enteredtext) == stuff.key) then
                 local tw2 = TS:Create(Key,info,{Position = UDim2.new(-1, 0,0.514, 0)})
                 tw2:Play()
+                options.unlocked = true
                 stuff.func()
             end
         end)
@@ -1360,7 +1362,7 @@ end
 
 local cooldown = false
 UIS.InputBegan:Connect(function(input,process)
-    if (input.KeyCode == options.key and not cooldown) then
+    if (input.KeyCode == options.key and not cooldown and options.unlocked) then
         options.open = not options.open
         cooldown = true
         if options.open then
