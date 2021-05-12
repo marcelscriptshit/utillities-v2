@@ -261,7 +261,7 @@ do--main
         end
 
         function refreshtab()
-            tweenitem(Background,0.1,{Size = UDim2.new(1,0,0,23 * (window.count + window.tempcount))})
+            tweenitem(Background,0.1,{Size = UDim2.new(1,0,0,22 * (window.count + window.tempcount))})
         end
 
         local dropped = true
@@ -269,7 +269,7 @@ do--main
             dropped = not dropped
             if dropped then
                 tweenitem(Body,0.1,{Size = UDim2.new(1,0,23.038,0)})
-                tweenitem(Background,0.1,{Size = UDim2.new(1,0,0,23 * (window.count + window.tempcount))})
+                tweenitem(Background,0.1,{Size = UDim2.new(1,0,0,22 * (window.count + window.tempcount))})
                 tweenitem(Drop,0.1,{Rotation = 90})
             else
                 tweenitem(Body,0.1,{Size = UDim2.new(1,0,0,0)})
@@ -299,7 +299,7 @@ do--main
             Toggle.Parent = Holder
             Toggle.BackgroundColor3 = Color3.fromRGB(170, 0, 255)
             Toggle.BackgroundTransparency = 0.900
-            Toggle.Size = UDim2.new(0, 187,0, 23)
+            Toggle.Size = UDim2.new(0, 187,0, 22)
             Toggle.ZIndex = 10
             Toggle.BorderSizePixel = 0
 
@@ -382,7 +382,7 @@ do--main
             ButtonButton.BackgroundColor3 = Color3.fromRGB(170, 0, 255)
             ButtonButton.BackgroundTransparency = 0.900
             ButtonButton.Position = UDim2.new(0, 34, 0, 100)
-            ButtonButton.Size = UDim2.new(0, 187, 0, 21)
+            ButtonButton.Size = UDim2.new(0, 187, 0, 22)
             ButtonButton.ZIndex = 6
             ButtonButton.BorderSizePixel = 0
 
@@ -394,7 +394,7 @@ do--main
             Button_2Button.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
             Button_2Button.BackgroundTransparency = 1.000
             Button_2Button.Position = UDim2.new(0, 0, 0, 1)
-            Button_2Button.Size = UDim2.new(0, 187, 0, 25)
+            Button_2Button.Size = UDim2.new(0, 187, 0, 22)
             Button_2Button.Visible = true
             Button_2Button.ZIndex = 10
             Button_2Button.Font = Enum.Font.SourceSans
@@ -406,7 +406,7 @@ do--main
             TextLabelButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
             TextLabelButton.BackgroundTransparency = 1.000
             TextLabelButton.Position = UDim2.new(0, 32, 0, 1)
-            TextLabelButton.Size = UDim2.new(0, 155, 0, 21)
+            TextLabelButton.Size = UDim2.new(0, 155, 0, 22)
             TextLabelButton.ZIndex = 10
             TextLabelButton.Font = Enum.Font.Code
             TextLabelButton.Text = "> "..text
@@ -789,7 +789,7 @@ do--main
                         ADDED = getcount()
                         window.tempcount = window.tempcount + ADDED
                     end
-                    tweenitem(Background,0.1,{Size = UDim2.new(1,0,0,23 * (window.count + window.tempcount))})
+                    tweenitem(Background,0.1,{Size = UDim2.new(1,0,0,22 * (window.count + window.tempcount))})
                     
                 else
                     tweenitem(Drop123,0.1,{Rotation = 0})
@@ -797,7 +797,7 @@ do--main
                     if ADDED > 0 then
                         window.tempcount = window.tempcount - ADDED
                     end
-                    tweenitem(Background,0.1,{Size = UDim2.new(1,0,0,23 * (window.count + window.tempcount))})
+                    tweenitem(Background,0.1,{Size = UDim2.new(1,0,0,22 * (window.count + window.tempcount))})
                 end
             end)
 
@@ -1104,7 +1104,7 @@ do--main
             Label.BackgroundColor3 = Color3.fromRGB(170, 0, 255)
             Label.BackgroundTransparency = 0.900
             Label.Position = UDim2.new(0, 0, 0.593007743, 0)
-            Label.Size = UDim2.new(1, 0, 0.0286378767, 0)
+            Label.Size = UDim2.new(1, 0, 0, 22)
             Label.ZIndex = 10
 
             UIGradien123123t.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 0, 255)), ColorSequenceKeypoint.new(0.51, Color3.fromRGB(170, 0, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(0, 0, 255))}
