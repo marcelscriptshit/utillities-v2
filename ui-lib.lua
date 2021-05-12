@@ -788,9 +788,9 @@ do--main
                     local c = getcount()
                     if c > 0 then
                         ADDED = c
-                        print(ADDED,window.tempcount)
                         window.tempcount = window.tempcount + ADDED
                     end
+                    print(ADDED,window.tempcount)
                     refreshtab()
                     
                 else
@@ -799,6 +799,7 @@ do--main
                     if ADDED > 0 then
                         window.tempcount = window.tempcount - ADDED
                     end
+                    print(ADDED,window.tempcount)
                     refreshtab()
                 end
             end)
