@@ -5,7 +5,6 @@ local options = {
     tabs = {},
     blurcamera = false,
     open = true,
-    folders = {}
 }
 local library = {}
 
@@ -792,7 +791,7 @@ do--main
                         print(ADDED,window.tempcount)
                     end
                     print(ADDED,window.tempcount)
-                    refreshtab()
+                    tweenitem(Background,0.1,{Size = UDim2.new(1,0,0.688 * (window.count + window.tempcount),0)})
                     
                 else
                     tweenitem(Drop123,0.1,{Rotation = 0})
@@ -801,7 +800,7 @@ do--main
                         window.tempcount = window.tempcount - ADDED
                     end
                     print(ADDED,window.tempcount)
-                    refreshtab()
+                    tweenitem(Background,0.1,{Size = UDim2.new(1,0,0.688 * (window.count + window.tempcount),0)})
                 end
             end)
 
