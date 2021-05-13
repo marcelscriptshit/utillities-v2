@@ -6,8 +6,8 @@ local funcs = {}
 
 --Settings--
 local ESP = {
-    Enabled = true,
-    Boxes = true,
+    Enabled = false,
+    Boxes = false,
     BoxShift = CFrame.new(0,-1.5,0),
 	BoxSize = Vector3.new(4,6,0),
     Color = Color3.fromRGB(255, 170, 0),
@@ -15,8 +15,8 @@ local ESP = {
     TracerColor = Color3.fromRGB(0, 0, 255),
     BoxColor = Color3.fromRGB(255, 255, 0),
     FaceCamera = false,
-    Names = true,
-    Tracers = true,
+    Names = false,
+    Tracers = false,
     TeamColor = true,
     Thickness = 2,
     AttachShift = 1,
