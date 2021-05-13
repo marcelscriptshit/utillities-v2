@@ -1,7 +1,7 @@
 local modulename = "visuals-lib"
 getgenv().script.main.module_storage[modulename] = {}
 local loaded_modules = getgenv().script.main.module_storage.loaded
-local funcs = {}
+local charstuff = {}
 
 
 --Settings--
@@ -31,17 +31,17 @@ local ESP = {
 
 for i,v in pairs(getgc(true)) do
     if type(v) == "table" and rawget(v,"UI") then
-        funcs.modules = v
+        charstuff.modules = v
     end
     if type(v) == "function" and not is_synapse_function(v) and islclosure(v) then
         if table.find(getconstants(v),"IsClient") and table.find(getconstants(v),"Fire") then
-            funcs.charadded = v
+            charstuff.charadded = v
         end
     end
 end
 
-funcs.charevent = getupvalue(funcs.charadded,5)
-funcs.chartable = getupvalue(funcs.modules.Characters.GetCharacter,1)
+charstuff.charevent = getupvalue(charstuff.charadded,5)
+charstuff.chartable = getupvalue(charstuff.modules.Characters.GetCharacter,1)
 
 --Declarations--
 local cam = workspace.CurrentCamera
@@ -91,7 +91,7 @@ function ESP:GetColorNames(obj)
 end
 
 function ESP:getPlayerFromChar(char)
-    for player,character in pairs(funcs.chartable) do
+    for player,character in pairs(charstuff.chartable) do
         if character == char then
             return player
         end
@@ -417,7 +417,7 @@ local function CharAdded(char)
     end
 end
 local function PlayerAdded(p)
-    for name,char in pairs(funcs.chartable) do
+    for name,char in pairs(charstuff.chartable) do
         if tostring(p) == tostring(name) then
             CharAdded(char)
 
@@ -427,7 +427,7 @@ local function PlayerAdded(p)
         end
     end
 
-    funcs.charevent.Event:connect(function(name,char)
+    charstuff.charevent.Event:connect(function(name,char)
         if tostring(p) == tostring(name) then
             CharAdded(char)
 
