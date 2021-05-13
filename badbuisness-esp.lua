@@ -78,7 +78,7 @@ function ESP:IsTeamMate(p)
 		return ov(p)
     end
     
-    return self:GetTeam(p) == self:GetTeam(plr)
+    return charstuff.modules.Teams.ArePlayersFriendly(charstuff.modules.Teams,plr,p)
 end
 
 function ESP:GetColorNames(obj)
