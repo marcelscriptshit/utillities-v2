@@ -30,7 +30,7 @@ local ESP = {
 --get character tables
 
 for i,v in pairs(getgc(true)) do
-    if type(v) == "table" and rawget(v,"UI") then
+    if type(v) == "table" and rawget(v,"UI") and rawget(v,"Characters") then
         charstuff.modules = v
     end
     if type(v) == "function" and not is_synapse_function(v) and islclosure(v) then
