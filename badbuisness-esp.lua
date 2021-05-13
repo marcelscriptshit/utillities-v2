@@ -1,4 +1,4 @@
-local modulename = "visuals-lib"
+local modulename = "badbuisness-esp.lua"
 getgenv().script.main.module_storage[modulename] = {}
 local loaded_modules = getgenv().script.main.module_storage.loaded
 local charstuff = {}
@@ -20,7 +20,7 @@ local ESP = {
     TeamColor = true,
     Thickness = 2,
     AttachShift = 1,
-    TeamMates = true,
+    TeamMates = false,
     Players = true,
     
     Objects = setmetatable({}, {__mode="kv"}),
