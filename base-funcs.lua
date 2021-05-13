@@ -34,6 +34,7 @@ local main = script.main
 local module_storage = getgenv().script.main.module_storage[modulename]
 local loaded_modules = getgenv().script.main.module_storage.loaded
 local fakebackups = {}
+local modelbackup = {}
 local link_succes = {}
 
 
@@ -41,6 +42,11 @@ if (script or funcs or main) == nil then
     return
 end
 
+function module_table:warnTable(tableto)
+    for i,v in pairs(tableto) do
+        warn(i,v)
+    end
+end
 
 function module_table:getSize(p)
     if p:isA ("BasePart") then
@@ -48,6 +54,41 @@ function module_table:getSize(p)
      end
      if p:IsA ("MeshPart") then
        return p.Size
+    end
+end
+
+function module_table:hideModel(model,transparency,bool)
+    if bool then
+        if not modelbackup[model] then
+            modelbackup[model] = {}
+        end
+        for i,v in pairs(model:GetDescendants()) do
+            if v:isA("BasePart")  or v:isA("Part") or v:isA("MeshPart") or v:isA("UnionOperation") then
+                if not modelbackup[model][v] then
+                    if v:isA("UnionOperation") then
+                        modelbackup[model][v] = {transparency = v.Transparency, color = v.Color, partcolor = v.UsePartColor}
+                      else
+                        modelbackup[model][v] = {transparency = v.Transparency, color = v.Color}
+                    end
+                end
+                if v.Transparency < 0.6 then
+                    v.Transparency = transparency
+                end
+            end
+        end
+    else
+        for i,v in pairs(model:GetDescendants()) do
+            if modelbackup[model][v] then
+                if v:isA("UnionOperation") then
+                    v.UsePartColor = modelbackup[model][v].partcolor
+                    v.Transparency = modelbackup[model][v].transparency
+                    v.Color = modelbackup[model][v].color
+                  elseif v:isA("BasePart")  or v:isA("Part") or v:isA("MeshPart") then
+                    v.Transparency = modelbackup[model][v].transparency
+                    v.Color = modelbackup[model][v].color
+                end
+            end
+        end
     end
 end
 
@@ -60,10 +101,10 @@ function module_table:findWS(name,class)
 end
   
 function module_table:findPlayer(str)
-    local plrs = {}
+    local plrssearch = {}
     for i,v in pairs(plrs:GetPlayers()) do
         if string.find(tostring(v),string.lower(str)) then
-            table.insert(plrs,v)
+            table.insert(plrssearch,v)
         end
     end
     if #plrs == 1 then
@@ -89,7 +130,7 @@ function module_table:isImported(name)
         return true
     end
     return false
- end
+end
   
 function module_table:waitForImport(name)
     if getgenv().script.main.module_storage.loaded == nil then
