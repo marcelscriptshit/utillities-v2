@@ -1098,6 +1098,7 @@ do--main
 
         function window:AddText(text,barunderline)
             window.count = window.count + 1
+            local texttable = {}
 
             local Label = Instance.new("Frame")
             local UIGradien123123t = Instance.new("UIGradient")
@@ -1142,8 +1143,12 @@ do--main
             TextLabel.TextSize = 14.000
             TextLabel.TextXAlignment = Enum.TextXAlignment.Left
 
+            function texttable:Set(textset)
+                TextLabel.Text = "> "..textset
+            end
 
-            return Label
+
+            return texttable,Label
         end
         
         
