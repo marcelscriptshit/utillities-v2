@@ -101,17 +101,17 @@ function module_table:findWS(name,class)
 end
   
 function module_table:findPlayer(str)
-    local plrssearch = {}
+    local found = {}
     for i,v in pairs(plrs:GetPlayers()) do
         if string.find(tostring(v),string.lower(str)) then
-            table.insert(plrssearch,v)
+            table.insert(found,v)
         end
     end
-    if #plrs == 1 then
-      return "single",plrs[1]
+    if #found == 1 then
+      return "single",found[1]
     end
-    if #plrs > 1 then
-      return "multi",plrs
+    if #found > 1 then
+      return "multi",found
     end
     return false
 end
