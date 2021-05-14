@@ -103,7 +103,7 @@ end
 function module_table:findPlayer(str)
     local found = {}
     for i,v in pairs(plrs:GetPlayers()) do
-        if string.find(tostring(v),string.lower(str)) then
+        if string.find(string.lower(tostring(v)),string.lower(str)) then
             table.insert(found,v)
         end
     end
