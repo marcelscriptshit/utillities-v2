@@ -105,8 +105,9 @@ do--main
         end
 
         tweenitem(Main,1,{Position = UDim2.new(0,0,-0.035,0)})
-        cg.TopBar.Enabled = false
-
+        if cg:FindFirstChild("TopBar") then
+            cg.TopBar.Enabled = false
+        end
     end
 
     function library:CloseMenu()
@@ -117,7 +118,9 @@ do--main
         end
 
         tweenitem(Main,1,{Position = UDim2.new(0,0,-3,0)})
-        cg.TopBar.Enabled = true
+        if cg:FindFirstChild("TopBar") then
+            cg.TopBar.Enabled = true
+        end
     end
 
     function library:AddTab(name,icon)
